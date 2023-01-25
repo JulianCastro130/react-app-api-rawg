@@ -1,0 +1,55 @@
+.gamesList {
+  background-color: rgb(94, 114, 94);
+  width: 100%;
+}
+table {
+  table-layout: fixed;
+  margin: 0;
+  display: inline-table;
+  width: 100%;
+}
+.gamesList table {
+  color: white;
+}
+.gamesList table thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(94, 114, 94);
+  border: 2px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid rgb(34, 41, 34);
+  border-right: 1px solid rgb(34, 41, 34);
+}
+.gamesList table thead tr th button {
+  color: white;
+  width: 100%;
+  background-color: rgb(94, 114, 94);
+  border-style: none;
+}
+.gamesList .gamesList table tbody {
+  background-color: rgb(58, 70, 58);
+  height: 500px;
+}
+.gamesList .gamesList tbody tr td {
+  width: 100%;
+  text-align: center;
+}
+.gamesList tbody tr {
+  color: white;
+  height: 10px;
+  padding: 0;
+}
+/* .gamesList tbody tr td {
+} */
+.img-size {
+  border-radius: 40%;
+  overflow: hidden;
+  width: 500px;
+  height: 300px;
+}
+.img-div {
+  position: fixed;
+  left: 0;
+  bottom: 25rem;
+}

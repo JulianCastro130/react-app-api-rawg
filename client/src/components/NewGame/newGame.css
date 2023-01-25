@@ -1,0 +1,96 @@
+.divNewGame {
+  width: 500px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: rgb(94, 114, 94);
+  border: 2px solid rgb(34, 41, 34);;
+}
+.divNewGame2 {
+  width: 450px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: 2px solid rgb(34, 41, 34);
+}
+.divNewGameH1 {
+  display: flex;
+  align-items: flex-start;
+  left: 0;
+}
+.NewGameH1{
+  display: flex;
+  align-items: flex-start;
+  left: 0;
+}
+.formNewGame {
+  width: 400px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(34, 41, 34);
+}
+.tableNewGame {
+  text-align: center;
+}
+.tdNewGameLabel {
+  color: white;
+  text-align: left;
+  padding-left: 10%;
+}
+.trNewGame {
+  height: 70px;
+}
+.tdNewGameInput {
+  color: white;
+
+}
+.divNewGameButton{
+  display: flex;
+  justify-content: center;
+}
+.buttonNewGame {
+  height: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 13rem;
+  color: white;
+  background-color: rgb(94, 114, 94);
+  width: 5rem;
+  bottom: 10px;
+  border: 2px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom:1px solid rgb(34, 41, 34);
+  border-right:1px solid rgb(34, 41, 34);
+}
+.inputNewGame {
+  width: 90%;
+  height: 1.7rem;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgb(58, 70, 58);
+}
+.labelNewGame {
+  font-size: 1.2rem;
+}
+/* 
+.tbodyNewGame {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+*/

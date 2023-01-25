@@ -1,0 +1,20 @@
+.findGames {
+    width: 1000px;
+    background-color: rgb(94, 114, 94);
+}
+.findGames .divFind {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+}
+
+.findGames button {
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 2px solid rgb(51, 62, 51);
+    border-right: 2px solid rgb(51, 62, 51);
+    color: white;
+    background-color: rgb(94, 114, 94);
+    left: 0;
+}
