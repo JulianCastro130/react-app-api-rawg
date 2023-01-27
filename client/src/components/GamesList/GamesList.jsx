@@ -9,8 +9,9 @@ import Filter from '../Filter/Filter';
 import { useEffect } from 'react';
 import { getGames } from '../../redux/actions/actions';
 import { sortGames } from '../../redux/actions/actions';
-import image from './steam.png'
+import image from './csMenu2.png'
 import Pagination from '../Pagination/Pagination'
+
 
 const GamesList = () => {
 
@@ -20,14 +21,15 @@ const GamesList = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [game, setGame] = useState({});
   const [sort, setSort] = useState('asc')
-  const [hoverId, setHoverId] = useState(image);
+  const [hoverBg, setHoverBg] = useState(image);
+  const [hoverName, setHoverName] = useState();
   const [gamesPerPage] = useState(15)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-
-  const handleHover = (id) => {
-    setHoverId(id);
+  const handleHover = (background_image,name) => {
+    setHoverBg(background_image);
+    setHoverName(name)
   }
 
   useEffect(() => {
@@ -35,14 +37,18 @@ const GamesList = () => {
       dispatch(getGames())
     }
     setTotalPages(Math.ceil(games.length / gamesPerPage))
-  }, [hoverId, games])
+  }, [hoverBg, games, dispatch])
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
+
   const handleClick = (game) => {
     setGame(game)
-    setShowModal(true)
     dispatch(findById(game.id))
+    setTimeout(() => {
+      setShowModal(true)
+    }, 1500)
   }
   const handleFilters = () => {
     setShowFilters(!showFilters)
@@ -51,14 +57,24 @@ const GamesList = () => {
     dispatch(sortGames(a, b))
     sort === 'asc' ? setSort('desc') : setSort('asc')
   }
-
+  
   return (
-    <div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+    <div className='parentGameList'>
+      {/* style={{backgroundImage: `url(${hoverBg})`, backgroundRepeat: 'no-repeat',backgroundPosition: '50% 35%'}} */}
+      {!showModal &&
+        <div className='img-div'>
+          <img className='img-size' src={hoverBg} alt="img" />
+          <h1 style={{color: 'white'}} className='img-h1'>{hoverName}</h1>
+        </div>
+      }
+      {!showModal &&
+        <Pagination
+        className='pagination'
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      }
+
       <div className='table-wrapper gamesList'>
         {!showModal &&
           <table key='1' className="tg">
@@ -70,22 +86,42 @@ const GamesList = () => {
                 <th key='6' className="tg-0lax">
                   <button key='7' onClick={() => handleSort('genre', sort)}>Genre</button>
                 </th>
-                <th key='8' className="tg-0lax">
-                  <button key='9' onClick={() => handleSort('rating', sort)}>Rating</button>
+                <th key='12' className="tg-0lax">
+                  <button key='13' onClick={() => handleSort('platform', sort)}>Platform</button>
                 </th>
                 <th key='10' className="tg-0lax">
                   <button key='11' onClick={() => handleSort('released', sort)}>Released</button>
+                </th>
+                <th key='8' className="tg-0lax">
+                  <button key='9' onClick={() => handleSort('rating', sort)}>Rating</button>
                 </th>
               </tr>
             </thead>
             <tbody className='gamesList'>
               {
                 games.slice((currentPage - 1) * gamesPerPage, currentPage * gamesPerPage).map((game, index) => {
-                  if (game.genres === undefined) {
-                    game.genre = "No Genre";
-                  } else {
-                    game.genre = game.genres[0].name;
+                  if (!game.platforms || !game.genres) {
+                    game.genre = "No Genre"
+                    game.platforms = "No Platforms"
                   }
+                  let allGenres = []
+                  let allPlatforms = []
+                  game.genres.forEach(g => {
+                    allGenres.push(g.name)
+                  })
+                  game.genre = allGenres.join(', ')
+                  if (!isNaN(game.id)) {
+                    game.platforms.forEach(p => {
+                      allPlatforms.push(p.platform.name)
+                    })
+                    game.platform = allPlatforms.join(', ')
+                  } else {
+                    game.platforms.forEach(p => {
+                      allPlatforms.push(p.name)
+                    })
+                    game.platform = allPlatforms.join(', ')
+                  }
+
                   return (
                     <tr key={game.id} onClick={() => handleClick(game)}>
                       <Games
@@ -97,6 +133,7 @@ const GamesList = () => {
                         rating={game.rating}
                         genre={game.genre}
                         released={game.released}
+                        platform={game.platform}
                       />
                     </tr>
                   );
@@ -112,12 +149,11 @@ const GamesList = () => {
       {!showModal &&
         <div className='buttonDiv'>
           <button key='4982394820934' onClick={() => handleFilters()}>Change Filters</button>
-          {showFilters && <Filter game={game} />}
+          {showFilters && <Filter
+            setCurrentPage={setCurrentPage}
+            game={game} />}
         </div>
       }
-      <div className='img-div'>
-        <img className='img-size' src={hoverId} alt="img" />
-      </div>
     </div>
   )
 };

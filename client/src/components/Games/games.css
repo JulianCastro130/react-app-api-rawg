@@ -1,0 +1,9 @@
+.td_platforms {
+    font-size: xx-small;
+}
+.td_rating {
+    display: flex;
+    text-align: center;
+    color: gold;
+    font-size: larger;
+}

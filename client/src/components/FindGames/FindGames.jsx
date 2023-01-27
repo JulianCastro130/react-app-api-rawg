@@ -1,15 +1,13 @@
-import React from 'react';
-import GamesList from '../GamesList/GamesList';
-import Find from '../Find/Find'
-import './findGames.css'
+// import React from 'react';
+// import GamesList from '../GamesList/GamesList';
+// import './findGames.css'
 
-function FindGames() {
+// function FindGames() {
 
-    return (
-        <div className='findGames'>
-            <Find />
-            <GamesList />
-        </div>
-    )
-}
-export default FindGames;
+//     return (
+//         <div className='findGames'>
+//             <GamesList />
+//         </div>
+//     )
+// }
+// export default FindGames;

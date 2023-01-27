@@ -4,7 +4,10 @@ import {
   FIND_GAME,
   GET_GAMES,
   SORT_GAMES,
-  GET_GENRES
+  GET_GENRES,
+  FILTER_GENRE,
+  GET_PLATFORMS,
+  FILTER_PLATFORMS,
 } from "../actions/actions";
 
 const initialState = {
@@ -12,7 +15,8 @@ const initialState = {
   games: [],
   gamesFinded: [],
   gameFindedById: {},
-  genres: []
+  genres: [],
+  platforms: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,7 +30,12 @@ const rootReducer = (state = initialState, action) => {
     case GET_GENRES:
       return {
         ...state,
-        genres: [...action.payload]
+        genres: [...action.payload],
+      };
+    case GET_PLATFORMS:
+      return {
+        ...state,
+        platforms: [...action.payload],
       };
     case FIND_GAME:
       return {
@@ -72,9 +81,20 @@ const rootReducer = (state = initialState, action) => {
         if (column === "released") {
           return new Date(a.released) - new Date(b.released);
         }
-        if (column === "genre" && a.genres && b.genres) {
+        if (column === "genre") {
           return a.genres[0].name.localeCompare(b.genres[0].name);
-        } else {
+        }
+        if (column === "platform") {
+          if(!isNaN(a.id)){
+            if(!isNaN(b.id)){return a.platforms[0].platform.name.localeCompare(b.platforms[0].platform.name)}
+            else {return a.platforms[0].platform.name.localeCompare(b.platforms[0].name)}
+          }
+          if(isNaN(a.id)){
+            if(!isNaN(b.id)){return a.platforms[0].name.localeCompare(b.platforms[0].platform.name)}
+            else {return a.platforms[0].name.localeCompare(b.platforms[0].name)}
+          }
+        } 
+        else {
           return a[column] - b[column];
         }
       });
@@ -85,6 +105,32 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         games: [...sortedGames],
       };
+    case FILTER_GENRE:
+      let gamesByGenres =
+        action.payload === "All"
+          ? [...state.originGames]
+          : [
+              ...state.games.filter((game) => {
+                return game.genres.some((obj) => obj.name === action.payload);
+              }),
+            ];
+      return {
+        ...state,
+        games: gamesByGenres,
+      };
+      case FILTER_PLATFORMS:
+        let gamesByPlatforms =
+          action.payload === "All"
+            ? [...state.originGames]
+            : [
+                ...state.games.filter((game) => {
+                  return game.platforms.some((obj) => obj.platform.name === action.payload);
+                }),
+              ];
+        return {
+          ...state,
+          games: gamesByPlatforms,
+        };
     default:
       return {
         ...state,

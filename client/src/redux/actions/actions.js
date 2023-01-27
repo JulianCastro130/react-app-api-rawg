@@ -1,12 +1,15 @@
 import axios from "axios";
 
-export const GET_GAMES = "GET_GAMES";
-export const FIND_GAME = "FIND_GAME";
-export const FIND_BY_ID = "FIND_BY_ID";
-export const FILTER_GAME = "FILTER_GAME";
-export const SORT_GAMES = 'SORT_GAMES'
+export const GET_GAMES = "GET_GAMES"
+export const FIND_GAME = "FIND_GAME"
+export const FIND_BY_ID = "FIND_BY_ID"
+export const FILTER_GAME = "FILTER_GAME"
+export const SORT_GAMES = "SORT_GAMES"
 export const GET_GENRES = "GET_GENRES"
 export const GET_IMAGE = "GET_IMAGE"
+export const FILTER_GENRE = "FILTER_GENRE"
+export const GET_PLATFORMS = "GET_PLATFORMS"
+export const FILTER_PLATFORMS = "FILTER_PLATFORMS"
 
 
 export const getGames = () => {
@@ -45,5 +48,28 @@ export const getGenres = () => {
   return async function (dispatch) {
     const res = await axios(`http://localhost:3001/genres`);
     dispatch({ type: GET_GENRES, payload: res.data });
+  };
+};
+
+export const filterGenres = (genre) => {
+  return {
+    type: FILTER_GENRE,
+    payload: genre,
+  };
+};
+
+
+
+export const getPlatforms = () => {
+  return async function (dispatch) {
+    const res = await axios(`http://localhost:3001/platforms`);
+    dispatch({ type: GET_PLATFORMS, payload: res.data });
+  };
+};
+
+export const filterPlatforms = (genre) => {
+  return {
+    type: FILTER_PLATFORMS,
+    payload: genre,
   };
 };

@@ -3,8 +3,6 @@ import './find.css'
 import { findGames } from '../../redux/actions/actions';
 import { useState } from 'react';
 
-
-
 const Find = () => {
     const [find, setFind] = useState('')
     const dispatch = useDispatch()
@@ -16,10 +14,11 @@ const Find = () => {
     function handleClick() {
         dispatch(findGames(find))
     }
+
     return (
         <div className='find'>
-            <h1>Find</h1>
-            <input placeholder='find' type="text" name="find" id="find" onChange={handleChange} />
+            <h1 className='findH1'>FIND</h1>
+            <input placeholder='Name...' type="text" name="fin" id="find" onChange={handleChange} />
             <button onClick={handleClick}>Search</button>
         </div>
     )
