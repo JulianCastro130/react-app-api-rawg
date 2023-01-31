@@ -8,6 +8,7 @@ import {
   FILTER_GENRE,
   GET_PLATFORMS,
   FILTER_PLATFORMS,
+  RENDER_GAME,
 } from "../actions/actions";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   gameFindedById: {},
   genres: [],
   platforms: [],
+  gameRendered: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -118,7 +120,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         games: gamesByGenres,
       };
-      case FILTER_PLATFORMS:
+    case FILTER_PLATFORMS:
         let gamesByPlatforms =
           action.payload === "All"
             ? [...state.originGames]
@@ -131,6 +133,11 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           games: gamesByPlatforms,
         };
+    case RENDER_GAME:
+      return {
+       ...state,
+        gameRendered: action.payload,
+      };
     default:
       return {
         ...state,

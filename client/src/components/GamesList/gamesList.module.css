@@ -35,7 +35,6 @@ button {
 table {
   color: white;
   font-size: 0.5em;
-  border: 2px solid rgb(60, 73, 60);
   table-layout: fixed;
   margin: 0;
   width: 100%;
@@ -74,6 +73,7 @@ table {
   border: 2px solid rgb(60, 73, 60);
   color: white;
   padding: 0;
+  max-height: 100%;
 }
 
 .imgDiv {
@@ -92,10 +92,9 @@ table {
 
 .buttonDiv {
   position: absolute;
-  left: 0;
+  bottom: 0;
   height: 1.5em;
   width: 39.8em;
-  border: 3px solid rgb(60, 73, 60);
   background-color: rgb(94, 114, 94);
   display: flex;
   align-items: center;

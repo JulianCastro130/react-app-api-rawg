@@ -26,3 +26,7 @@
     border-right: 1px solid rgb(34, 41, 34);
     background-color: rgb(94, 114, 94);
 }
+
+.filter .select {
+    border-radius: 0.5em;
+}

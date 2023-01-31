@@ -10,6 +10,7 @@ export const GET_IMAGE = "GET_IMAGE"
 export const FILTER_GENRE = "FILTER_GENRE"
 export const GET_PLATFORMS = "GET_PLATFORMS"
 export const FILTER_PLATFORMS = "FILTER_PLATFORMS"
+export const RENDER_GAME = "RENDER_GAME"
 
 
 export const getGames = () => {
@@ -73,3 +74,10 @@ export const filterPlatforms = (genre) => {
     payload: genre,
   };
 };
+
+export const renderGame = (form) => {
+  return {
+    type: RENDER_GAME,
+    payload: form,
+  }
+} 

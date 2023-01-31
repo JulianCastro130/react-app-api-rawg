@@ -35,7 +35,7 @@ function Modal(props) {
                                         : `(${gameFinded.rating})`
                     }</span></p>
                 </div>
-                <div className={style.div3}>
+                <div id={style.div} className={style.div3}>
                     <h1>DESCRIPTION</h1>
                     <br />
                     <p>{gameFinded.description_raw ? gameFinded.description_raw : gameFinded.description}</p>
