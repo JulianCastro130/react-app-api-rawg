@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import NewGame from "../NewGame/NewGame"
-import './home.css'
+import style from './home.module.css'
 import { getGames, getGenres, getPlatforms } from "../../redux/actions/actions"
 import GamesList from "../GamesList/GamesList"
+import { Link } from "react-router-dom"
 
 
 
@@ -29,14 +30,14 @@ const Home = () => {
     }, [originalGames])
 
     return (
-        <div className="home">
+        <div className={style.home}>
             <h1>COUNTER STRIKE</h1>
-            <p>Quit</p>
-            <p>Options</p>
-            <button className="homeButton" onClick={handleClickFind}>Find game</button>
-            <button className="homeButton" onClick={handleClickNewGame}>New game</button>
-            {showNewGame ? <NewGame className='newGame' /> : null}
-            {showGamesList ? <GamesList className='findGames' /> : null}
+            <Link to='/'><button>Quit</button></Link>
+            <Link to='/cv'><button>Options</button></Link>
+            <button onClick={handleClickFind}>Find game</button>
+            <button onClick={handleClickNewGame}>New game</button>
+            {showNewGame ? <NewGame /> : null}
+            {showGamesList ? <GamesList /> : null}
         </div>
     )
 

@@ -44,21 +44,17 @@ const { Videogame, Genre, Platform } = sequelize.models;
 
 // Aca vendrian las relaciones
 Videogame.belongsToMany(Genre, {
-  through: "Videogame_Genre",
-  timestamps: false,
+  through: "Videogame_Genre"
 });
 Genre.belongsToMany(Videogame, {
-  through: "Videogame_Genre",
-  timestamps: false,
+  through: "Videogame_Genre"
 });
 
 Videogame.belongsToMany(Platform, {
-  through: "Videogame_Platform",
-  timestamps: false,
+  through: "Videogame_Platform"
 });
 Platform.belongsToMany(Videogame, {
-  through: "Videogame_Platform",
-  timestamps: false,
+  through: "Videogame_Platform"
 });
 // Product.hasMany(Reviews);
 

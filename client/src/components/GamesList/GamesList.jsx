@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Games from '../Games/Games';
-import './gamesList.css'
+import style from './gamesList.module.css'
 import Modal from '../Modal/Modal';
 import { useState } from 'react';
 import { findById } from '../../redux/actions/actions';
@@ -27,22 +27,19 @@ const GamesList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const handleHover = (background_image,name) => {
+  const handleHover = (background_image, name) => {
     setHoverBg(background_image);
     setHoverName(name)
   }
-
   useEffect(() => {
     if (!games.length) {
       dispatch(getGames())
     }
     setTotalPages(Math.ceil(games.length / gamesPerPage))
   }, [hoverBg, games, dispatch])
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
-
   const handleClick = (game) => {
     setGame(game)
     dispatch(findById(game.id))
@@ -57,47 +54,43 @@ const GamesList = () => {
     dispatch(sortGames(a, b))
     sort === 'asc' ? setSort('desc') : setSort('asc')
   }
-  
   return (
-    <div className='parentGameList'>
-      {/* style={{backgroundImage: `url(${hoverBg})`, backgroundRepeat: 'no-repeat',backgroundPosition: '50% 35%'}} */}
+    <div className={style.parentGameList}>
       {!showModal &&
-        <div className='img-div'>
-          <img className='img-size' src={hoverBg} alt="img" />
-          <h1 style={{color: 'white'}} className='img-h1'>{hoverName}</h1>
+        <div className={style.imgDiv}>
+          <img src={hoverBg} alt="img" />
+          <h1>{hoverName}</h1>
         </div>
       }
       {!showModal &&
         <Pagination
-        className='pagination'
           totalPages={totalPages}
           handlePageChange={handlePageChange}
         />
       }
-
-      <div className='table-wrapper gamesList'>
+      <div className={style.gamesList}>
         {!showModal &&
-          <table key='1' className="tg">
-            <thead key='2000' className="tg-head">
-              <tr key='3'>
-                <th key='4' className="tg-0lax">
-                  <button key='5' onClick={() => handleSort('name', sort)}>Name</button>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <button onClick={() => handleSort('name', sort)}>Name</button>
                 </th>
-                <th key='6' className="tg-0lax">
-                  <button key='7' onClick={() => handleSort('genre', sort)}>Genre</button>
+                <th className="tg-0lax">
+                  <button onClick={() => handleSort('genre', sort)}>Genre</button>
                 </th>
-                <th key='12' className="tg-0lax">
-                  <button key='13' onClick={() => handleSort('platform', sort)}>Platform</button>
+                <th className="tg-0lax">
+                  <button onClick={() => handleSort('platform', sort)}>Platform</button>
                 </th>
-                <th key='10' className="tg-0lax">
-                  <button key='11' onClick={() => handleSort('released', sort)}>Released</button>
+                <th className="tg-0lax">
+                  <button onClick={() => handleSort('released', sort)}>Released</button>
                 </th>
-                <th key='8' className="tg-0lax">
-                  <button key='9' onClick={() => handleSort('rating', sort)}>Rating</button>
+                <th className="tg-0lax">
+                  <button onClick={() => handleSort('rating', sort)}>Rating</button>
                 </th>
               </tr>
             </thead>
-            <tbody className='gamesList'>
+            <tbody>
               {
                 games.slice((currentPage - 1) * gamesPerPage, currentPage * gamesPerPage).map((game, index) => {
                   if (!game.platforms || !game.genres) {
@@ -105,22 +98,11 @@ const GamesList = () => {
                     game.platforms = "No Platforms"
                   }
                   let allGenres = []
-                  let allPlatforms = []
-                  game.genres.forEach(g => {
-                    allGenres.push(g.name)
-                  })
+                  game.genres.forEach(g => { allGenres.push(g.name) })
                   game.genre = allGenres.join(', ')
-                  if (!isNaN(game.id)) {
-                    game.platforms.forEach(p => {
-                      allPlatforms.push(p.platform.name)
-                    })
-                    game.platform = allPlatforms.join(', ')
-                  } else {
-                    game.platforms.forEach(p => {
-                      allPlatforms.push(p.name)
-                    })
-                    game.platform = allPlatforms.join(', ')
-                  }
+                  game.platform = !isNaN(game.id)
+                    ? game.platforms.map(p => p.platform.name).join(', ')
+                    : game.platforms.map(p => p.name).join(', ')
 
                   return (
                     <tr key={game.id} onClick={() => handleClick(game)}>
@@ -147,9 +129,10 @@ const GamesList = () => {
         }
       </div>
       {!showModal &&
-        <div className='buttonDiv'>
-          <button key='4982394820934' onClick={() => handleFilters()}>Change Filters</button>
+        <div className={style.buttonDiv}>
+          <button onClick={() => handleFilters()}>Change Filters</button>
           {showFilters && <Filter
+            className={style.filter}
             setCurrentPage={setCurrentPage}
             game={game} />}
         </div>

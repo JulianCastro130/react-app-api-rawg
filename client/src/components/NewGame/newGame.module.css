@@ -1,0 +1,167 @@
+.divNewGame {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  top: 2em;
+  bottom: 0;
+  width: 40em;
+  height: 45em;
+  background-color: rgb(94, 114, 94);
+  border: 5px solid rgb(55, 67, 55);
+  border-radius: 0.5em;
+}
+
+.divNewGame form {
+  font-size: 1em;
+}
+
+.divNewGame .tableNewGame {
+  text-align: center;
+  border: none;
+  overflow-y: scroll;
+}
+
+.divNewGame .tableNewGame .tbodyNewGame {
+  margin: 5em;
+  background-color: rgb(59, 72, 59);
+}
+
+.divNewGame .trNewGame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divNewGame .tdNewGameLabel {
+  display: inline-block;
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+}
+
+
+.divNewGame .tdNewGameInput {
+  background-color: rgb(94, 114, 94);
+  color: white;
+  border-radius: 1em;
+  background-color: rgb(59, 72, 59);
+}
+.divNewGame .tdNewGameInputDescription {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(94, 114, 94);
+  background-color: rgb(59, 72, 59);
+  color: white;
+  width: 80%;
+  border-radius: 1em;
+}
+
+.divNewGame .tdNewGameLabelDescription {
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+}
+
+.divNewGame .buttonNewGame {
+  margin-top: 2em;
+  padding-bottom: 1em;
+  color: white;
+  background-color: rgb(94, 114, 94);
+  border: 2px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid rgb(34, 41, 34);
+  border-right: 1px solid rgb(34, 41, 34);
+}
+
+.divNewGame .inputNewGame {
+  font-size: 1rem;
+  color: white;
+  background-color: rgb(94, 114, 94);
+  border-radius: 1em;
+  width: 10em;
+}
+
+.divNewGame .inputNewGame:hover {
+  background-color: rgb(56, 67, 56);
+}
+
+.divNewGame .labelNewGame {
+  font-size: 1rem;
+}
+
+.errors {
+  display: inline-block;
+  color: red;
+}
+
+.divNewGame .selectBox {
+  position: relative;
+}
+
+.selectBox {
+  color: white;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.inputGenre {
+  background-color: transparent;
+}
+
+#checkboxes {
+  margin: auto;
+  border: none;
+  overflow-y: scroll;
+  width: 20em;
+  height: 10em;
+}
+
+#checkboxes label {
+  color: white;
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: rgb(56, 67, 56);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(94, 114, 94) 15%, rgb(34, 41, 34));
+  border-radius: 20px;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+textarea {
+  resize: none;
+  width: 20em;
+  height: 5em;
+}
+
+textarea::-webkit-input-placeholder {
+  font-family: "Counter-Strike", sans-serif;
+}

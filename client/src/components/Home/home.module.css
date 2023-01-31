@@ -1,9 +1,10 @@
 .home {
   font-family: "Counter-Strike", sans-serif;
   margin: 0;
-  background-image: url("csMenu.jpg");
+  background-image: url("./csMenu.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column-reverse;
@@ -12,19 +13,13 @@
   margin: 0;
   color: white;
 }
-.home p {
+.home button {
+  max-height: 1em;
+  position: sticky;
+  font-size: 17px;
+  width: 100px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
   margin: 0;
-  color: white;
-}
-.homeButton {
-    margin: 0;
-    width: 300px;
-}
-
-.home .findGames{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
 }

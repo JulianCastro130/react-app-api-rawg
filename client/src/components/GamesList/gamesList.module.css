@@ -1,47 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap");
 button {
   color: white;
-  height: 30px;
   border: 2px;
   border-top: 1px solid white;
   border-left: 1px solid white;
   border-bottom: 1px solid rgb(34, 41, 34);
   border-right: 1px solid rgb(34, 41, 34);
   background-color: rgb(94, 114, 94);
+  border-radius: 0.5em;
 }
+
 .parentGameList {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
   position: relative;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  width: 50%;
-  height: 85%;
-  top: 50px;
-  /* transition: box-shadow ease 10s;
-  transition: width 2s, height 4s; */
+  top: 2em;
+  bottom: 0;
+  width: 40em;
+  height: 55em;
+  display: inline-block;
+  background-color: rgb(94, 114, 94);
+  border: 5px solid rgb(55, 67, 55);
+  border-radius: 0.5em;
 }
-/* .parentGameList:hover {
-  box-shadow: 0 0 100px #000;
-  position: relative;
-  margin: auto;
-  width: 51%;
-  height: 90%;
-  top: 50px;
-} */
 
 .gamesList {
   background-color: rgb(94, 114, 94);
   width: 100%;
+  max-height: 45em;
 }
+
 table {
+  color: white;
+  font-size: 0.5em;
   border: 2px solid rgb(60, 73, 60);
   table-layout: fixed;
   margin: 0;
-  display: inline-table;
   width: 100%;
+  max-height: 100%;
+  display: inline-table;
 }
-.gamesList table {
-  color: white;
-}
+
 .gamesList table thead tr th {
   position: sticky;
   top: 0;
@@ -53,33 +54,33 @@ table {
   border-right: 1px solid rgb(34, 41, 34);
 }
 .gamesList table thead tr th button {
+  font-size: 1em;
   color: white;
-  width: 100%;
   background-color: rgb(94, 114, 94);
   border-style: none;
 }
+
 .gamesList .gamesList table tbody {
   border: 2px solid rgb(60, 73, 60);
   background-color: rgb(58, 70, 58);
-  height: 500px;
+  overflow-y: scroll;
 }
-.gamesList .gamesList tbody tr td {
-  width: 100%;
+
+.gamesList .gamesList table tbody tr td {
   text-align: center;
 }
+
 .gamesList tbody tr {
   border: 2px solid rgb(60, 73, 60);
   color: white;
-  height: 10px;
   padding: 0;
 }
-/* .gamesList tbody tr td {
-} */
-.img-div {
-  width: 100%;
-  height: 300px;
+
+.imgDiv {
+  height: 15em;
 }
-.img-size {
+
+.imgDiv img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,22 +89,38 @@ table {
   width: 100%;
   height: 100%;
 }
+
 .buttonDiv {
-  border: 2px solid rgb(60, 73, 60);
+  position: absolute;
+  left: 0;
+  height: 1.5em;
+  width: 39.8em;
+  border: 3px solid rgb(60, 73, 60);
   background-color: rgb(94, 114, 94);
-  display: inline-block;
-  width: 99.8%;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5em;
 }
-.img-h1 {
+
+.buttonDiv button {
+  height: 100%;
+  font-size: 0.6em;
+  padding-top: 0.5em;
+  padding-bottom: 1.8em;
+  text-align: center;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid rgb(34, 41, 34);
+  border-right: 1px solid rgb(34, 41, 34);
+  background-color: rgb(94, 114, 94);
+}
+
+.imgDiv h1 {
   font-family: "Londrina Shadow", cursive;
-  position: fixed;
-  left: 50%;
-  top: 32%;
-  transform: translate(-50%, -50%);
-  font-size: 40px;
-  text-align: justify;
-  text-justify: inter-word;
-  /* margin: auto; */
-  /*
-  left: 47%; */
+  position: relative;
+  display: flex;
+  bottom: 1.2em;
+  font-size: 2em;
+  justify-content: center;
+  text-align: center;
 }

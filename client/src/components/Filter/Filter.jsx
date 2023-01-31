@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterGames, filterGenres, filterPlatforms } from "../../redux/actions/actions";
-import './filter.css'
+import style from './filter.module.css'
 
 
 
@@ -34,9 +34,9 @@ function Filter(props) {
   }
 
   return (
-    <div key='43627846287346287346'>
-      <button key='436278462873462873' onClick={() => handleClick("db")}>Own Created Games</button>
-      <button key='4367346287346' onClick={() => handleClick('api')}>World Wide Games</button>
+    <div className={style.filter}>
+      <button onClick={() => handleClick("db")}>Own Created Games</button>
+      <button onClick={() => handleClick('api')}>World Wide Games</button>
       <select value={selectedGenres} onChange={handleGenresChange}>
         <option value="All">All</option>
         {genres.map(genre => <option key={genre.id} value={genre.name}>{genre.name}</option>)}
@@ -45,7 +45,7 @@ function Filter(props) {
         <option value="All">All</option>
         {platforms.map(platform => <option key={platform.id} value={platform.name}>{platform.name}</option>)}
       </select>
-      <button key='22312312312' onClick={() => handleClick('refresh')}>Refresh</button>
+      <button onClick={() => handleClick('refresh')}>Refresh</button>
     </div>
 
   )
