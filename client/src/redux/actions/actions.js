@@ -43,7 +43,7 @@ export const filterGames = (id) => {
 
 export const sortGames = (column, order) => {
   return { type: SORT_GAMES, payload: {column, order} }
-}
+};
 
 export const getGenres = () => {
   return async function (dispatch) {
@@ -58,8 +58,6 @@ export const filterGenres = (genre) => {
     payload: genre,
   };
 };
-
-
 
 export const getPlatforms = () => {
   return async function (dispatch) {
@@ -80,4 +78,4 @@ export const renderGame = (form) => {
     type: RENDER_GAME,
     payload: form,
   }
-} 
+} ;

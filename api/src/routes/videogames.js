@@ -31,6 +31,7 @@ for (let i = 1; i <= 5; i++) {
     axios.get(`https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=${i}`)
   );
 }
+
 const getApiVideogames = async () => {
   let gamesApiResponse = [];
   const results = await Promise.all(urlsArray);
@@ -46,7 +47,6 @@ const getGameById = async (id) => {
 };
 
 // Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 router.get("/", async (req, res) => {
   let games = []
   const { name } = req.query
@@ -65,7 +65,9 @@ router.get("/", async (req, res) => {
         `https://api.rawg.io/api/games?search=${name}&key=4d6c5895e09f4178aa85fee165a997a3`
       )
     } else
-     {gamesApiResponse = await getApiVideogames()}
+     {
+      gamesApiResponse = await getApiVideogames()
+    }
 
     if (gamesApiSearch) {
       gamesApi = gamesApiSearch.data.results;
@@ -89,7 +91,6 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     if(isUUID(id)){
       let games = await getGameById(id)

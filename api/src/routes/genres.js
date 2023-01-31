@@ -18,7 +18,6 @@ const getGenres = async () => {
   return genres;
 };
 
-
 router.get("/", async (req, res) => {
   try {
     let genres = await getGenres();
