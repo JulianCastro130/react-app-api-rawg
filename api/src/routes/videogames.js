@@ -25,6 +25,21 @@ const getGames = async () => {
   return games
 };
 
+let urlsArray = [];
+for (let i = 1; i <= 5; i++) {
+  urlsArray.push(
+    axios.get(`https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=${i}`)
+  );
+}
+const getApiVideogames = async () => {
+  let gamesApiResponse = [];
+  const results = await Promise.all(urlsArray);
+  results.forEach(
+    (result) => (gamesApiResponse = [...gamesApiResponse, ...result.data.results])
+  );
+  return gamesApiResponse;
+};
+
 const getGameById = async (id) => {
   const game = await Videogame.findByPk(id)
   return game
@@ -50,31 +65,8 @@ router.get("/", async (req, res) => {
         `https://api.rawg.io/api/games?search=${name}&key=4d6c5895e09f4178aa85fee165a997a3`
       )
     } else
-     {
-      let response1 = await axios.get(
-        `https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=1`
-      )
-      let response2 = await axios.get(
-        `https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=2`
-      )
-      let response3 = await axios.get(
-        `https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=3`
-      )
-      let response4 = await axios.get(
-        `https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=4`
-      )
-      let response5 = await axios.get(
-        `https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=5`
-      )
+     {gamesApiResponse = await getApiVideogames()}
 
-      gamesApiResponse = [
-        ...response1.data.results,
-        ...response2.data.results,
-        ...response3.data.results,
-        ...response4.data.results,
-        ...response5.data.results,
-      ]
-    }
     if (gamesApiSearch) {
       gamesApi = gamesApiSearch.data.results;
     } else {

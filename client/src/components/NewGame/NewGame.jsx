@@ -5,6 +5,7 @@ import style from './newGame.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getGames, renderGame } from "../../redux/actions/actions";
+import imgPrev from './counter-strike.png'
 
 const validate = (form) => {
     let errors = {};
@@ -46,6 +47,7 @@ const NewGame = () => {
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
     const [showGame, setShowGame] = useState(false)
+    const [prevGame, setPrevGame] = useState(!showGame)
 
     const [form, setForm] = useState({
         name: "",
@@ -123,7 +125,6 @@ const NewGame = () => {
     return (
         <div className={style.divNewGame}>
             <h1 className={style.NewGameH1}>Create Game</h1>
-
             <form onSubmit={handleSubmit} className={style.formNewGame}>
                 <div className={style.div1N}>
                     {showGame && <div className={style.divGameCardWrap}>
@@ -136,6 +137,7 @@ const NewGame = () => {
                             </div>
                             : null}
                     </div>}
+                    {prevGame && <div className={style.prevGame}><img src={imgPrev}/></div>}
                 </div>
 
                 <div className={style.div2N}>
