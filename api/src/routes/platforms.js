@@ -2,12 +2,12 @@ const { Router } = require("express");
 const router = Router();
 const { Platform } = require("../db");
 const axios = require("axios");
+const {API_KEY} = process.env
 
 // Controllers
 const addAllPlatforms = async () => {
   const allPlatforms = []
-  const platforms = await axios.get('https://api.rawg.io/api/platforms?key=4d6c5895e09f4178aa85fee165a997a3')
-  // console.log(platforms.data.results);
+  const platforms = await axios.get(`https://api.rawg.io/api/platforms?key=${API_KEY}`)
   platforms.data.results.map(platform=>{
     allPlatforms.push(platform.name);
   })

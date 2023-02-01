@@ -2,11 +2,12 @@ const { Router } = require("express");
 const router = Router();
 const { Genre } = require("../db");
 const axios = require("axios");
+const {API_KEY} = process.env
 
 // Controllers
 const addAllGenres = async () => {
   const allGenres = []
-  const genres = await axios.get('https://api.rawg.io/api/genres?key=4d6c5895e09f4178aa85fee165a997a3')
+  const genres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
   genres.data.results.map(genre=>{
     allGenres.push(genre.name);
   })

@@ -2,6 +2,7 @@ const { Router } = require("express");
 const axios = require("axios");
 const { Videogame, Genre, Platform } = require("../db");
 const { isUUID } = require("validator");
+const {API_KEY} = process.env
 
 const router = Router();
 
@@ -28,7 +29,7 @@ const getGames = async () => {
 let urlsArray = [];
 for (let i = 1; i <= 5; i++) {
   urlsArray.push(
-    axios.get(`https://api.rawg.io/api/games?key=4d6c5895e09f4178aa85fee165a997a3&page=${i}`)
+    axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
   );
 }
 
@@ -62,7 +63,7 @@ router.get("/", async (req, res) => {
 
     if (name) {
       gamesApiSearch = await axios.get(
-        `https://api.rawg.io/api/games?search=${name}&key=4d6c5895e09f4178aa85fee165a997a3`
+        `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
       )
     } else
      {
@@ -102,7 +103,7 @@ router.get("/:id", async (req, res) => {
       let games = await getGameById(id)
       res.status(200).json(games);
     }else{
-      let games = await axios.get(`https://api.rawg.io/api/games/${id}?key=4d6c5895e09f4178aa85fee165a997a3`)
+      let games = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
       res.status(200).json(games.data);
     }
   } catch (error) {
