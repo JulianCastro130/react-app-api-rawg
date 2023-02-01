@@ -47,7 +47,6 @@ const NewGame = () => {
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
     const [showGame, setShowGame] = useState(false)
-    const [prevGame, setPrevGame] = useState(!showGame)
 
     const [form, setForm] = useState({
         name: "",
@@ -84,10 +83,10 @@ const NewGame = () => {
         const stringForm = JSON.stringify(form)
         const jsonForm = await JSON.parse(stringForm)
         axios.post(`http://localhost:3001/videogames`, jsonForm)
-        dispatch(getGames())
         dispatch(renderGame(form))
         setTimeout(() => {
             setShowGame(true)
+            dispatch(getGames())
         }, 1500)
     }
 
@@ -137,7 +136,7 @@ const NewGame = () => {
                             </div>
                             : null}
                     </div>}
-                    {prevGame && <div className={style.prevGame}><img src={imgPrev}/></div>}
+                    {!showGame && <div className={style.prevGame}><img src={imgPrev}/></div>}
                 </div>
 
                 <div className={style.div2N}>
@@ -211,7 +210,8 @@ const NewGame = () => {
 
                     <textarea className={style.inputNewGameTextarea} type='text' placeholder="Description..." name="description" value={form.description} onChange={handleChange} />
 
-                    <button className={style.buttonNewGame} type="submit">SUBMIT</button>
+                    <button className={style.buttonNewGame} type="submit" disabled={errors.name || errors.rating || errors.background_image || errors.description}>SUBMIT</button>
+
                 </div>
 
 

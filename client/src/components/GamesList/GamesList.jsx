@@ -76,16 +76,16 @@ const GamesList = () => {
                 <th>
                   <button onClick={() => handleSort('name', sort)}>Name</button>
                 </th>
-                <th className="tg-0lax">
+                <th>
                   <button onClick={() => handleSort('genre', sort)}>Genre</button>
                 </th>
-                <th className="tg-0lax">
+                <th>
                   <button onClick={() => handleSort('platform', sort)}>Platform</button>
                 </th>
-                <th className="tg-0lax">
+                <th>
                   <button onClick={() => handleSort('released', sort)}>Released</button>
                 </th>
-                <th className="tg-0lax">
+                <th>
                   <button onClick={() => handleSort('rating', sort)}>Rating</button>
                 </th>
               </tr>

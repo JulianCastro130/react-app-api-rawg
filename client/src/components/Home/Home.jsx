@@ -32,8 +32,8 @@ const Home = () => {
     return (
         <div className={style.home}>
             <h1>COUNTER STRIKE</h1>
-            <Link to='/'><button>Quit</button></Link>
-            <Link to='/cv'><button>Options</button></Link>
+            <Link className={style.link} to='/'><button>Quit</button></Link>
+            <Link className={style.link} to='/about'><button>Options</button></Link>
             <button onClick={handleClickFind}>Find game</button>
             <button onClick={handleClickNewGame}>New game</button>
             {showNewGame ? <NewGame /> : null}

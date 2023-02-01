@@ -83,14 +83,20 @@ router.get("/", async (req, res) => {
         : gamesDb
         ? gamesDb
         : filteredGames;
+        
     res.status(200).json(games);
+
   } catch (error) {
+
     res.status(400).send({ error: error.message });
+
   }
 })
 
 router.get("/:id", async (req, res) => {
+
   const { id } = req.params;
+
   try {
     if(isUUID(id)){
       let games = await getGameById(id)
@@ -102,9 +108,11 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
+
 });
 
 router.post("/", async (req, res) => {
+
   const {
     name,
     genre,
@@ -116,6 +124,7 @@ router.post("/", async (req, res) => {
   } = await req.body;
 
   try {
+
     let newGame = await Videogame.create({
       name,
       description,
@@ -136,6 +145,5 @@ router.post("/", async (req, res) => {
 
   }
 });
-//
 
 module.exports = router;
